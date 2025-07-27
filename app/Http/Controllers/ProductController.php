@@ -31,9 +31,15 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_produk' => 'required',
+            'nama_produk' => 'required|min:8|max:12', //nama produk wajib diisi
             'harga_produk' => 'required',
             'deskripsi' => 'required',
+        ], [
+            'nama_produk.min' => 'nama produk minimal 8 karakter',
+            'nama_produk.max' => 'nama produk maximal 12 karakter',
+            'nama_produk.required' => 'inputan nama produk wajib di isi',
+            'harga_produk.required' => 'inputan harga produk wajib di isi',
+            'deskripsi.required' => 'inputan deskripsi produk wajib di isi',
         ]);
 
         // untuk menambahkan data ke dalam database
