@@ -54,4 +54,18 @@ class ProductController extends Controller
         // setelah data berhasil di tambah maka akan mengarah ke halaman /product dan memberikan notif berhasil menambahkan data
         return redirect('/product')->with('message', 'berhasil menambahkan data');
     }
+
+    public function show($id)
+    {
+        // query/perintah untuk mengambil data dari id
+        // elequent ORM
+        $data = produk::findOrFail($id);
+
+        // // query builder
+        // DB::table('tb_produk')->where('id_produk', $id)->findOrFail();
+
+        return view('pages.produk.detail', [
+            'produk' => $data
+        ]);
+    }
 }

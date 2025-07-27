@@ -7,7 +7,7 @@ Route::get('/', function () {
     return view('pages.beranda');
 });
 
-Route::get('/about', function (){
+Route::get('/about', function () {
     return view('pages.about', [
         'nama' => 'nurul istiqmala',
         'umur' => '21',
@@ -19,7 +19,8 @@ Route::get('/about', function (){
 Route::view('/contact', 'pages.contact');
 
 // satu controller bisa menyimpan banyak method
-Route::get('/product', [ProductController::class,'index']); //ini untuk read data (menampilkan data)
+Route::get('/product', [ProductController::class, 'index']); //ini untuk read data (menampilkan data)
 
-Route::get('/product/create', [ProductController::class,'create']); //menampilkan halaman form data
-Route::post('/product', [ProductController::class,'store']);
+Route::get('/product/create', [ProductController::class, 'create']); //menampilkan halaman form data
+Route::post('/product', [ProductController::class, 'store']);
+Route::get('/product/{id}', [ProductController::class, 'show']);
